@@ -1,0 +1,6 @@
+<h2>Price: <span class="product-name"><%= @product.name %></span></h2>
+
+<h3>Price: $<span class="product-price"><%= @product.price %></span></h3>
+<h3>Inventory: <span class="product-inventory"><%= @product.inventory %></span></h3>
+<h4>Description: <span class="product-description"><%= @product.description %></span></h4>
+<%= link_to 'Next Product', data_path(@product), {class: 'js-next', data: {id: @product.id}} %>
