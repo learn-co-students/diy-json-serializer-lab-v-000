@@ -1,0 +1,25 @@
+<h3 id="name">Name: <%= @product.name %></h3>
+<h3 id="inventory">Inventory: <%= @product.inventory %></h3>
+<h3 id="price">Price: <%= @product.price %></h3>
+<h3 id="description">Description: <%= @product.description %></h3>
+<a href="#" class="js-next" data-id="<%=@product.id%>">Next Product</a>
+
+<script type="text/javascript">
+	$('.js-next').click(function() {
+		var id = parseInt($(this).data("id")) + 1;
+		$.get('/products/' + id + '/data', function(data) {
+			$('#name').text(data["name"]);
+			$('#inventory').text(data["inventroy"]);
+			$('#price').text(data["price"]);
+			$('#description').text(data["description"]);
+			// $.get('/products/' + (id+1) + '/data')
+				// .done(function(){
+					$(".js-next").data("id", data["id"]);
+				// })
+				// .fail(function(){
+					// $('.js-next').hide();
+				// });
+		});
+	});
+</script>
+
