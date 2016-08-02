@@ -1,7 +1,7 @@
 <h3 class="product-name"><%= @product.name %></h3>
 <p class="product-description"><%= @product.description %></p>
-<p class="product-inventory">Inventory: <%= @product.inventory.to_i %></p>
-<p class="product-price">Price: <%= @product.price.to_i %></p>
+<p class="product-inventory">Inventory: <%= @product.inventory %></p>
+<p class="product-price">Price: <%= @product.price %></p>
 
 <a href="#" class="js-next" data-id="<%= @product.id %>">Next Product</a>
 
