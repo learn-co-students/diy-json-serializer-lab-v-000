@@ -1,0 +1,19 @@
+<h1 class="productName"><%= @product.name %></h1>
+<h4 class="productPrice"><%= @product.price %></h4>
+<p class="productDesc"><%= @product.description %></p>
+<a href="#" class="js-next" data-id="<%=@product.id%>">Next Product</a>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.js-next').click(function(){
+      console.log('IT was clicked');
+      var nextId = parseInt($(".js-next").attr("data-id")) + 1;
+      $.get('/products/' + nextId + '/data', function(productData){
+        $('.productName').text(productData["name"]);
+        $('.productPrice').text(productData["price"]);
+        $('.productDesc').text(productData["description"]);
+        $(".js-next").attr("data-id", productData["id"]);
+      });
+    });
+  });
+</script>

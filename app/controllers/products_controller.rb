@@ -1,6 +1,12 @@
 class ProductsController < ApplicationController
+  require 'json'
+
   def index
     @products = Product.all
+  end
+
+  def show
+    @product = Product.find(params[:id])
   end
 
   def inventory
@@ -20,6 +26,13 @@ class ProductsController < ApplicationController
   def create
     Product.create(product_params)
     redirect_to products_path
+  end
+
+  def data
+    product = Product.find(params[:id])
+    serialized_product = ProductSerializer.serialize(product)
+
+    render json: serialized_product
   end
 
   private
