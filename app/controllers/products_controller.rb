@@ -1,5 +1,4 @@
 class ProductsController < ApplicationController
-  require 'json'
 
   def index
     @products = Product.all
