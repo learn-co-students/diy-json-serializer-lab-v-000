@@ -23,3 +23,13 @@ end
   order.products << Product.find(Product.all.collect(&:id).sample)
 end
 
+product = Product.first
+product.description = "pretty cool"
+product.inventory = 3
+product.save
+
+product2 = Product.second
+product2.description = "yyyyyyyyy"
+product2.inventory = 5
+product2.save
+
