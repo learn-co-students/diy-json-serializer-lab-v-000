@@ -3,6 +3,7 @@
 <p class="productDescription"><%= @product.description %></p>
 <p class="productInventory"><%= @product.inventory %> available</p>
 <a href="#" class="js-next" data-id="<%= @product.id %>">Next Product</a>
+
 <script type="text/javascript" charset="utf-8">
 	$(function(){
 		$(".js-next").on("click", function(){
