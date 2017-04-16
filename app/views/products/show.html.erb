@@ -1,0 +1,33 @@
+<h1>Show Page</h1>
+<%= link_to "Next Product", "#", class: "js-next", data: { id: @product.id } %>
+<p class="product-id"><%= @product.id %></p>
+<p class="product-name">Name: <%= @product.name %></p>
+<p class="product-description">Description: <%= @product.description %></p>
+<p class="product-inventory">Inventory: <%= @product.inventory %></p>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $(".js-next").on("click", function(e) {
+      e.preventDefault()
+      let nextProduct = parseInt($(this).data("id")) + 1
+      console.log($(this).attr("data-id"))
+      console.log(nextProduct)
+      console.log($(this).data("id"))
+      $.ajax({
+        url: "/products/" + nextProduct + "/data",
+        dataType: "json"
+      })
+      .done(function(data) {
+        console.log(data)
+        $(".product-id").text(data["id"])
+        $(".product-name").text("Name: " + data["name"])
+        $(".product-description").text("Description: " + data["description"])
+        $(".product-inventory").text("Inventory: " + data["inventory"])
+        $(".js-next").data("id", data["id"])
+      })
+      .fail(function(error) {
+        alert("Error", error)
+      })
+    })
+  })
+</script
