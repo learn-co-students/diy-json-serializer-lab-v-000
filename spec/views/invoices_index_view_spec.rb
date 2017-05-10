@@ -1,4 +1,5 @@
-require "rails_helper"
+require 'rails_helper'
+driver = Selenium::WebDriver.for :chrome
 
 RSpec.describe "invoices_index_view" do
   before do
