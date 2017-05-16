@@ -1,0 +1,6 @@
+<h1 id="product_name"><%= @product.name %></h1>
+<p id="product_inventory"><%= @product.inventory %></p>
+<p id="product_price"><%= @product.price %></p>
+<p id="product_description"><%= @product.description %></p>
+
+<p><a href="<%= product_data_path(@product) %>" id="js-next-product" data-id="<%=@product.id%>">Next Product</a></p>
