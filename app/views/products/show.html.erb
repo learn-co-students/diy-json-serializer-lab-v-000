@@ -1,0 +1,16 @@
+show page
+<%= @product.name %> - <%= @product.description %>
+ <br>
+<a href="#" data-id="<%=@product.id %> " onclick="next(this)">Next Product</a>
+
+<script type="text/javascript">
+  function next(link) {
+    var nextId = parseInt(link.dataset.id) + 1
+
+    $.get("/products/" + nextId.toString() + "/data", function(product) {
+
+      var text = product.name + " - " + product.description
+      document.body.innerHTML += text
+    })
+  }
+</script>
