@@ -7,10 +7,14 @@
 <script type="text/javascript" charset="utf-8">
   $(function() {
     $('.js-next').click(function() {
-      let nextId = parseInt($(".js-next").attr("data-id")) + 1;
+      debugger;
+      var nextId = parseInt($(".js-next").attr("data-id")) + 1;
       $.get("/products/" + nextId + "/data", function(data) {
-        
-        debugger;
+        $(".productName").text(data['name']);
+        $(".productInventory").text(data['inventory']);
+        $(".productPrice").text(data['price']);
+        $(".productDescription").text(data['description']);
+        $(".js-next").attr("data-id", data["id"]);
       });
     });
   });
