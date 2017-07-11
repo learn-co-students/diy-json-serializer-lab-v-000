@@ -1,0 +1,26 @@
+<h3 id="name"><%= @product.name %></h3>
+<div id="description"><%= @product.description %></div>
+<a href="#" id="js-more" data-id="<%= @product.id + 1 %>">Next Product</a>
+
+<script type="text/javascript" charset="utf-8">
+$(function() {
+  $("#js-more").on("click", function() {
+    var id = $(this).attr("data-id");
+    $.get("/products/" + id + "/data", function(data) {
+      data = JSON.parse(data);
+      // get the json data
+      var description = data["description"];
+      var inventory = data["inventory"];
+      // set the inventory text
+      var inventoryText = "<strong>Available</strong>";
+      if(inventory === "false"){
+        inventoryText = "<strong>Sold Out</strong>";
+      }
+      var descriptionText = "<p>" + description + "</p><p>" + inventoryText + "</p>";
+      $("#name").html(data["name"])
+      $("#description").html(descriptionText);
+      $("#js-more").attr("data-id", data["next_id"]);
+    });
+  });
+});
+</script>
