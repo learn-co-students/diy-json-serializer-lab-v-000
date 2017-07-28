@@ -1,0 +1,21 @@
+<h3 id="name"><%= @product.name %></h3>
+Price: <span id="price"><%= @product.price %></span><br>
+Inventory: <span id="inventory"><%= @product.inventory %></span>
+<p id="description"><%= @product.description %></p>
+<a href="javascript:void(0)" data-id="<%= @product.id + 1 %>" class="js-next" id="next">Next Product</a>
+
+<script>
+  $(function(){
+    $('.js-next').on('click', function(){
+      var btn = $(this);
+      var id = $(this).data().id;
+      $.get('/products/'+id+'/data', function(data){
+        $('#name').text(data.name);
+        $('#price').text(data.price);
+        $('#inventory').text(data.inventory);
+        $('#description').text(data.description);
+        btn.attr('data-id', id+1);
+      })
+    });
+  });
+</script>
