@@ -1,0 +1,36 @@
+<a href="#" class="js-next" data-id="<%=@product.id%>">Next Product</a>
+<div class="product">
+  <h1 class="productName"><%= @product.name %></h1>
+  <p>Inventory: <span class="productInventory"><%= @product.inventory %></span></p>
+  <p>Price: $<span class="productPrice"><%= @product.price %></span></p>
+  <p>Description: <span class="productDescription"><%= @product.description %></span></p>
+</div>
+
+<script>
+  function getNextProduct(e) {
+    e.preventDefault();
+    const currentID = parseFloat(this.dataset.id);
+    const nextID = currentID + 1;
+
+  fetch(`/products/${nextID}/data`)
+    .then(blob => blob.json())
+    .then((data) => {
+      const product = document.querySelector('.product');
+      const name = product.querySelector('.productName');
+      const inventory = product.querySelector('.productInventory');
+      const price = product.querySelector('.productPrice');
+      const description = product.querySelector('.productDescription');
+
+      name.textContent = data.name;
+      inventory.textContent = data.inventory;
+      price.textContent = data.price;
+      description.textContent = data.description;
+
+      this.dataset.id = nextID;
+    })
+    .catch(err => console.error(`ERROR: ${err}`));
+  }
+
+  const button = document.querySelector('.js-next');
+  button.addEventListener('click', getNextProduct);
+</script>
