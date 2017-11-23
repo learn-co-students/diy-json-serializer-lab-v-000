@@ -1,0 +1,25 @@
+<h3>Product Info</h3>
+
+<div class="name">
+<%= @product.name %>
+</div>
+<div class="description">
+  <%= @product.description %>
+</div>
+
+
+<%= link_to "Next Product", "#", :id => @product.id, :class => "product-link"%>
+
+
+<script type="text/javascript">
+$(function() {
+  $(".product-link").click(function() {
+    var nextId = parseInt($(".product-link").attr('id')) + 1;
+    $.getJSON("/products/"+ nextId+ "/data", function(data) {
+      $(".name").text(data["name"]);
+      $(".description").text(data["description"]);
+      $(".product-link").attr('id', data["id"])
+    })
+  })
+})
+</script>
