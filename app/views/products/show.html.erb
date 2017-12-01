@@ -1,0 +1,19 @@
+<div class="productName"><%= @product.name %></div>
+<div class="productDescription"><%= @product.description %></div>
+
+<a href="#" class="js-next" data-id="<%= @product.id %>">Next Product</a>
+
+<script type="text/javascript">
+  $(function() { //this is shortcut for document ready
+    $(".js-next").on("click", function() { //jQuery find el by ID, on click execute
+      
+      var nextId = parseInt($(".js-next").attr("data-id")) + 1; //finds the jsnextid then grabs the data-id attribute and adds one ... this will give us the Id of the next post
+
+      $.get("/products/" + nextId + "/data", function(data) { // this funciton is going to have the response of the get request passed in by jQUery
+        $(".productName").text(data["name"]); // resets the values of the text of all of the fields to the next product
+        $(".productDescription").text(data["description"]);
+        $(".js-next").attr("data-id", data["id"]); // resets the ID to the ID of the product that you just updated to match the ID pushed in the data
+      })
+    })
+  })
+</script>
