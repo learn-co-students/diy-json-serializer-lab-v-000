@@ -1,0 +1,16 @@
+
+<h1 class="curr-name"><%= @product.name %></h1>
+<p class="curr-desc"><%= @product.description %></p>
+<a href="#" class="Next Product" name="Next Product" id="Next Product" nextProd-id="<%=@product.id + 1 %>">Next Product</a>
+
+<script type="text/javascript" charset="utf-8">
+$(function () {
+  $(".Next Product ").on("click", function() {
+    $.get("/products/" + parseInt($(".js-next").attr("nextProd-id")) + "/data", function(newProd) {
+      $(".curr-name").text(newProd["name"])
+      $(".curr-desc").text(newProd["description"])
+      $(".Next Product ").attr("nextProd-id", newProd["id"])
+    })
+  })
+})
+</script>
