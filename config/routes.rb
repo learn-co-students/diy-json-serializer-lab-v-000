@@ -6,6 +6,6 @@ Rails.application.routes.draw do
   get '/products/:id/description' =>  'products#description'
   get '/products/:id/inventory' =>  'products#inventory'
   get '/products/:id/data' => 'products#data'
-  get '/products/:id' => "products#show"
+  get '/products/:id' => "products#show", :as => :product
   
 end
