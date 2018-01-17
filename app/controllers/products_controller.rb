@@ -2,6 +2,25 @@ class ProductsController < ApplicationController
   def index
     @products = Product.all
   end
+  
+#  def data 
+#    product = Product.find(params[:id])
+#    product.inventory = product.inventory.to_i
+#    product.price = product.price.to_i
+    #binding.pry
+#    render json: ProductSerializer.serialize(product)
+#  end 
+
+  def data
+    product = Product.find(params[:id])
+    render json: ProductSerializer.serialize(product)
+  end
+
+  
+  def show 
+    @product = Product.find(params[:id])
+    
+  end 
 
   def inventory
     product = Product.find(params[:id])
