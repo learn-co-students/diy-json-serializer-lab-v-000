@@ -23,3 +23,7 @@ end
   order.products << Product.find(Product.all.collect(&:id).sample)
 end
 
+Product.each do |p|
+  p.description = Faker::Hipster.sentence
+end
+
