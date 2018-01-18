@@ -1,0 +1,8 @@
+<%= content_tag :h3, @product.name %>
+<a class="js-next" href="#" data-id="<%= @product.id %>">Next Product</a>
+
+<script type="text/javascript" charset="utf-8">
+  $(document).ready(function() {
+    nextProduct();
+  });  
+</script>
