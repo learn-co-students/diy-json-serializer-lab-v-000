@@ -1,0 +1,42 @@
+<input type="hidden" value="<%= @first_id %>" id="firstId">
+<input type="hidden" value="<%= @last_id %>" id="lastId">
+
+<a href="#" class="js-next" data-id="<%= @product.id.to_s %>">Next Product</a>
+
+<h1 class="productName"><%= @product.name %></h1><br>
+
+<strong>Price: $</strong>
+<p class="productPrice"><%= @product.price %></p><br>
+
+<strong>Inventory: </strong>
+<p class="productInventory"><%= @product.inventory %></p><br>
+
+<strong>Description</strong><br>
+<p class="productDescription"><%= @product.description %></p><br>
+
+
+
+<script type="text/javascript" charset="utf-8">
+$(document).ready(function () {
+  $(".js-next").on("click", function() {
+
+    var lastId = parseInt($("#lastId").attr("value"));
+    var nextId = parseInt($(".js-next").attr("data-id")) + 1;
+
+    if (nextId > lastId) {
+      nextId = parseInt($("#firstId").attr("value"));
+    }
+    
+    $.get("/products/" + nextId + "/data", function(data) {
+      $(".productName").html(data["name"]);
+      $(".productPrice").html(data["price"]);
+      $(".productInventory").html(data["inventory"]);
+      $(".productDescription").html(data["description"]);
+      
+      // re-set the id to current on the link
+      $(".js-next").attr("data-id", data["id"]);
+    });
+
+  });
+});
+</script>
