@@ -1,0 +1,21 @@
+<h1>PRODUCTIVITY!</h1>
+<a href="#" class="js-next" data-id="<%=@product.id%>">Next Product</a><br><br>
+<div class="product product-name"><%= @product.name %></div>
+<p class="product-description"><%= @product.description %></p>
+<p class="product-price"><%= @product.price %></p>
+<p class="product-inventory"><%= @product.inventory %></p>
+
+<script type='text/javascript' charset='utf-8'>
+$(function(){
+  $('.js-next').on('click', function(){
+    var nextId = parseInt($(this).attr('data-id')) + 1;
+    $.get('/products/' + nextId + '/data', function(data){
+      $('.product-name').text(data['name']);
+      $('.product-description').text(data['description']);
+      $('.product-price').text(data['price']);
+      $('.product-inventory').text(data['inventory']);
+      $('.js-next').attr('data-id', data['id']);
+    });
+  });
+});
+</script>

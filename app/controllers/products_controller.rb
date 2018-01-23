@@ -3,14 +3,23 @@ class ProductsController < ApplicationController
     @products = Product.all
   end
 
+  def show
+    @product = Product.find_by(id: params[:id])
+  end
+
   def inventory
-    product = Product.find(params[:id])
+    product = Product.find_by(id: params[:id])
     render plain: product.inventory > 0 ? true : false
   end
 
   def description
-    product = Product.find(params[:id])
+    product = Product.find_by(id: params[:id])
     render plain: product.description
+  end
+
+  def data
+    product = Product.find_by(id: params[:id])
+    render json: ProductSerializer.serialize(product)
   end
 
   def new
