@@ -1,5 +1,5 @@
 <div class="productName"><%= @product.name %></div>
-<a href="#" class="js-next" data-id="<%= @product.id %>">Next...</a>
+<a href="#" class="js-next" data-id="<%= @product.id %>">Next Product</a>
 <div class="productPrice"><%= @product.price %></div>
 <div class="productInventory"><%= @product.inventory %></div>
 <div class="productDescription"><%= @product.description %></div>
@@ -7,14 +7,16 @@
 <script type="text/javascript" charset="utf-8">
 $(function(){
 	$('.js-next').on('click', function(){
-		var productId = $('.js-next').data("id") + 1;
+		var productId = Number($('.js-next').attr("data-id")) + 1;
+		
 		$.getJSON('/products/' + productId + '/data', function(data) {
 			$('.productName').text(data["name"]);
 			$('.productPrice').text(data["price"]);
 			$('.productInventory').text(data["inventory"]);
 			$('.productDescription').text(data["description"]);
-			$('.js-next').attr("data-id", data["id"]);
+			$('.js-next').attr("data-id", productId);
 		});
+
 	});
 });
 </script>
