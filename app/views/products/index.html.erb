@@ -2,7 +2,7 @@
 <% @products.each do |product| %>
   <h3><%= product.name %></h3>
   <div id="product-<%= product.id %>"><%= truncate(product.description) %></div>
-  <button class="js-more" data-id="<%= product.id %>">More Info</button>
+  <a href="#" id="Next Product" class="js-more" data-id="<%= product.id %>">Next Product</a>
 <% end %>
 
 <script type="text/javascript" charset="utf-8">
