@@ -7,7 +7,7 @@
 <script type="text/javascript" charset="utf-8">
 $(function(){
 	$('.js-next').on('click', function(){
-		var productId = Number($('.js-next').attr("data-id")) + 1;
+		var productId = Number($('.js-next').data("id")) + 1;
 		
 		$.getJSON('/products/' + productId + '/data', function(data) {
 			$('.productName').text(data["name"]);
