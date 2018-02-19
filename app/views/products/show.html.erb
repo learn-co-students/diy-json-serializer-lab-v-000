@@ -1,7 +1,7 @@
 
-<a href="#" class="js-next" data-id="<%=@product.id%>">Next...</a>
+<a href="#" class="js-next" data-id="<%=@product.id%>">Next Product</a>
 <h1 class="productName"><%= @product.name %></h1>
-<p class="productDecscription"><%= @product.description %></p>
+<p class="productDescription"><%= @product.description %></p>
 <p class="productPrice">Price: <%= number_to_currency(@product.price) %></p>
 <p class="productInventory">Inventory <%= @product.inventory %></p>
 
