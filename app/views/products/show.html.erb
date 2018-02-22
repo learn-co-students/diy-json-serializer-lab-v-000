@@ -1,0 +1,33 @@
+<h1 class='productName'><%= @product.name %></h1>
+<a href="#" class='js-prev' data-id='<%= @product.id %>'>Previous Product</a>
+<a href="#" class='js-next' data-id='<%= @product.id %>'>Next Product</a>
+<p class='productDesc'><%= @product.description %></p>
+<p class='productPrice'>$<%= @product.price %></p>
+
+<script>
+  $(function(){
+    $('.js-next').on('click', function(){
+      var nextId = parseInt($('.js-next').attr('data-id')) + 1;
+      $.get('/products/' + nextId + '/data', function(data){
+        $('.productName').text(data["name"]);
+        $('.productDesc').text(data["description"]);
+        $('.productPrice').text(data["price"]);
+        $('.js-next').attr('data-id', data["id"]);
+      });
+    });
+  });
+</script>
+
+<script>
+  $(function(){
+    $('.js-prev').on('click', function(){
+      var prevId = parseInt($('.js-prev').attr('data-id')) - 1;
+      $.get('/products/' + prevId + '/data', function(data){
+        $('.productName').text(data["name"]);
+        $('.productDesc').text(data["description"]);
+        $('.productPrice').text(data["price"]);
+        $('.js-next').attr('data-id', data["id"]);
+      });
+    });
+  });
+</script>
