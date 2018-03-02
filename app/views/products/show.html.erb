@@ -1,0 +1,23 @@
+<div class="productName"><%= @product.name %></div>
+<div class="productDescription"><%= @product.description %></div>
+<div class="productInventory"><%= @product.inventory %></div>
+<div class="productPrice"><%= @product.price %></div>
+<a href="#" class='js-next' data-id="<%= @product.id %>"><button>Next Product</button></a>
+
+<script type="text/javascript">
+
+
+	$(document).on('click','.js-next', retrieveJSON)
+
+	function retrieveJSON(){
+		let nextId = parseInt($(this).attr("data-id"))+1
+		$.post("/products/"+nextId+"/data", function(data){
+			console.log(data['id'])
+			$(`.productName`).text(data["name"])
+			$(`.productDescription`).text(data["description"] || "No Description")
+			$(`.productInventory`).text(data["inventory"] || "No Inventory")
+			$(`.productPrice`).text(data["price"] || "No Price")
+			$('.js-next').attr('data-id', data['id'])
+		})
+	}
+</script>
