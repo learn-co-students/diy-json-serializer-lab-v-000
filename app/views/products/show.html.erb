@@ -1,0 +1,25 @@
+<!-- set up the show page to display all info -->
+<a href="#" class="js-next" data-id="<%= @product.id %>">Next Product</a>
+<h2 class="productName"><%= @product.name %></h2>
+<!-- add 'next' button to load next product without refresh -->
+<p class="productPrice"><strong>Price:</strong> <%= @product.price %></p>
+<p class="productInventory"><strong>Inventory:</strong> <%= @product.inventory %></p>
+<p class="productDescription"><strong>Description:</strong> <%= @product.description %></p>
+
+
+<script type="text/javascript" charset="utf-8">
+  $(function(){
+    $(".js-next").on("click", function(){
+      // set var with the next product id
+      var nextId = parseInt($(".js-next").attr("data-id")) + 1;
+      $.getJSON("/products/" + nextId + "/data", function(data){
+        $(".productName").text(data["name"]);
+        $(".productPrice").text(data["price"]);
+        $(".productInventory").text(data["inventory"]);
+        $(".productDescription").text(data["description"]);
+        // re-set the id to the current one for the link
+        $(".js-next").attr("data-id", data["id"]);
+      })
+    })
+  })
+</script>
