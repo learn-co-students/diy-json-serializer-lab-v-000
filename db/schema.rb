@@ -42,9 +42,9 @@ ActiveRecord::Schema.define(version: 20160125172450) do
     t.string   "name"
     t.integer  "price"
     t.integer  "inventory",   default: 1
-    t.string   "description"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.string   "description", default: "no description provided"
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
   end
 
 end
