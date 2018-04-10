@@ -1,0 +1,36 @@
+<div class="productName">
+  <h3><%= @product.name %></h3>
+</div>
+
+  <div id="product-<%= @product.id %>"><%= truncate(@product.description) %></div>
+  <button class="js-more" data-id="<%= @product.id %>">More Info</button>
+
+<br>
+<a href="#" class="js-next" data-id="<%=@product.id%>">Next Product</a>
+
+<script type="text/javascript" charset="utf-8">
+
+$(function() {
+
+  $(".js-more").on("click", function() {
+
+    var id = parseInt($(".js-next").attr("data-id"));
+    $.get("products/" + id + "/data", function(data) {
+        $("#body-" + id).text(data);
+    });
+
+  });
+
+  $(".js-next").on("click", function() {
+
+    var nextId = parseInt($(".js-next").attr("data-id")) + 1;
+
+    $.get("/products/" + nextId + "/data", function(data) {
+        $("#body-" + id).text(data);
+    });
+
+  });
+
+});
+
+</script>
