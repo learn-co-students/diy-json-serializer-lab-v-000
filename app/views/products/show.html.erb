@@ -1,0 +1,16 @@
+<h1 id="name"><%= @product.name %></h1>
+<h2 id="description"><%= @product.description %></h2>
+<a href="#" id="js-next-product" data-id="<%= @product.id %>">Next Product</a>
+
+<script type="text/javascript" charset="utf-8">
+  $(function() {
+    $('#js-next-product').on('click', function() {
+      var id = $(this).data('id') + 1;
+      $.get(id + "/data", function(response) {
+        $('#name').html(response.name);
+        $('#description').html(response.description);
+        $('#js-next-product').attr('data-id', response.id);
+      })
+    })
+  })
+</script>
