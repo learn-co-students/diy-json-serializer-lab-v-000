@@ -1,0 +1,50 @@
+
+
+<a href="#" class="js-next" data-id="<%=@product.id%>">Next Product</a>
+<h1 class="productName"><%= @product.name %></h1>
+<p class="productInventory"><%= @product.inventory %></p>
+<p class="productPrice"><%= @product.price %></p>
+<p class="productDescription"><%= @product.description %></p>
+
+<script type="text/javascript" charset="utf-8">
+$(function () {
+  $(".js-next").on("click", function() {
+    var nextId = parseInt($(".js-next").attr("data-id")) + 1;
+    $.get("/products/" + nextId + "/data", function(data) {
+      $(".productName").text(data["name"]);
+      $(".productPrice").text(data["price"]);
+      $(".productDescription").text(data["description"]);
+      $(".productInventory").text(data["inventory"]);
+      // re-set the id to current on the link
+      $(".js-next").attr("data-id", data["id"]);
+    });
+  });
+});
+</script>
+
+
+
+<!-- My solution worked.  Wouldn't pass their test through -->
+<!-- <div id="productName"><h3><%= @product.name %></h3></div>
+<div id="product-<%= @product.id %>"><%= @product.description %></div>
+<a href="#" class="js-next" data-id="<%=@product.id%>">Next Product</a> -->
+
+
+
+<!-- <script type="text/javascript" charset="utf-8">
+  $(function() {
+    $(".js-next").on("click", function(e) {
+      e.preventDefault()
+      var id = parseInt($(".js-next").attr("data-id"))
+      var nextId = id + 1
+      // I need to fix this: getting jumbled up in next two lines
+      $.getJSON("/products/" + nextId + "/data", function(data) {
+        let nameText = "<h3> " + data["name"] + "</h3>"
+        let descriptionText = data["description"]
+        $("#productName").html(nameText)
+        $("#product-" + id).html(descriptionText)
+        $(".js-next").attr("data-id", nextId.toString())
+        });
+      });
+    });
+</script> -->
