@@ -1,0 +1,32 @@
+<a id="js-next" href="#" data-id="<%= @product.id %>">Next Product</a>
+<h2 id="productName"><%= @product.name %></h2>
+<p>$<span id="productPrice"><%= @product.price %></span></p>
+<p id="productDesc"><%= @product.description %></p>
+<p id="productInv">
+  <% if !!@product.inventory && @product.inventory > 0 %>
+    Available
+  <% else %>
+    Sold Out
+  <% end %>
+</p>
+
+
+<script type="text/javascript" charset="utf-8">
+  $(function(){
+    $('#js-next').on('click', function(e){
+      var id = parseInt($(this).attr("data-id")) + 1;
+      $.get('/products/' + id + '/data', function(json){
+        var inventoryText = "Available";
+        if(json["inventory"] === 0){
+          inventoryText = "Sold Out";
+        }
+        $('#productName').text(json["name"]);
+        $('#productPrice').text(json["price"]);
+        $('#productDesc').text(json["description"]);
+        $('#productInv').text(inventoryText);
+        $('#js-next').attr("data-id", json["id"]);
+      });
+      e.preventDefault();
+    });
+  });
+</script>
