@@ -14,3 +14,15 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+// $(function(){
+//   $('.js-next').on('click', function(){
+//     let nextId = parseInt($('.js-next').attr('data-id')) + 1;
+//     $.getJSON(`/products/${nextId}/data`, function(data){
+//       $('.name').text(data["name"]);
+//       $('.price').text(data["price"]);
+//       $('.inventory').text(data["inventory"]);
+//       $('.description').text(data["description"]);
+//       $(".js-next").attr("data-id", data["id"]);
+//     })
+//   })
+// })
