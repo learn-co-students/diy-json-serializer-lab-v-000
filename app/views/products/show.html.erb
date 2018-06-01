@@ -1,0 +1,12 @@
+<%= link_to "Prev Product", "#", id:"prevProduct" %>
+<%= link_to "Next Product", "#", id:"nextProduct" %>
+<br><br>
+<div id="productInfo" data-id="<%= @product.id %>">
+  <strong id="productName">
+    <%= @product.name %>
+  </strong> - <span id="productPrice">
+    <%= number_to_currency(@product.price) %>
+  </span><br>
+  <dd id="productAvailability"><%= @product.inventory > 0 ? "Available": "Sold Out" %></dd>
+  <dd id="productDescription"><%= @product.description %></dd>
+</div>
