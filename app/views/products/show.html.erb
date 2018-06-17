@@ -1,0 +1,16 @@
+<div>
+    Name: <div id="name">
+        <%= @product.name %>
+    </div>
+    Description: <div id="description">
+        <%= @product.description %>
+    </div>
+    Inventory: <div id="inventory">
+        <%= @product.inventory %>
+    </div>
+    Price: <div id="price">
+        <%= @product.price %>
+    </div>
+</div>
+
+<a href="#" id="js-next" data-id="<%= @product.id %>">Next Product</a>
