@@ -1,0 +1,15 @@
+<script type="text/javascript" charset="utf-8">
+function renderProduct(id) {
+  $.getJSON("/products/" + id + "/data", function(product) {
+    $('#product').html("<p>" + product.name + "</p>" + "<p>" + product.description + "</p>" + '<a href="#" onclick="renderProduct(' + (product.id + 1) + '); return false">Next Product</a>')
+  })
+}
+</script>
+
+<div id="product">
+  <p><%= @product.name %></p>
+  <p><%= @product.description %></p>
+  <a href="#" onclick="renderProduct(<%= @product.id + 1 %>); return false">
+    Next Product
+  </a>
+</div>
