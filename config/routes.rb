@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   get '/products/:id/inventory', to: 'products#inventory'
     get 'products/:id', to: 'products#show'
   get 'products/:id/post_data', to: 'products#post_data'
+  get 'products/:id/datd', to: 'products#data'
 end
