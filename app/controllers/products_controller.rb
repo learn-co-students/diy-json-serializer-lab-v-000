@@ -3,14 +3,23 @@ class ProductsController < ApplicationController
     @products = Product.all
   end
 
+  def show
+    set_product
+  end
+
   def inventory
-    product = Product.find(params[:id])
-    render plain: product.inventory > 0 ? true : false
+    set_product
+    render plain: @product.inventory > 0
   end
 
   def description
-    product = Product.find(params[:id])
-    render plain: product.description
+    set_product
+    render plain: @product.description
+  end
+
+  def data
+    set_product
+    render json: ProductSerializer.serialize(@product)
   end
 
   def new
@@ -26,5 +35,9 @@ class ProductsController < ApplicationController
 
   def product_params
     params.require(:product).permit(:name, :description, :inventory, :price)
+  end
+
+  def set_product
+    @product = Product.find(params[:id])
   end
 end
