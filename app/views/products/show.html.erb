@@ -12,7 +12,7 @@ $(function(){
     // grab the id attribute of the product
     let $id = $(this).data("id");
     // get the JSON of the next object (note $id + 1)
-    $.getJSON(`http://localhost:3000/products/${parseInt($id) + 1}/data`, function(data){
+    $.getJSON(`/products/${parseInt($id) + 1}/data`, function(data){
       // update the data
       $(".productName").text(data["name"]);
       $(".productPrice").text(data["price"]);
