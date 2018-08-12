@@ -22,3 +22,15 @@ $(function() {
   });
 });
 </script>
+
+
+<!-- <script type="text/javascript" charset="utf-8">
+$(function() {
+  $(".js-more").on("click", function() {
+    var id = $(this).data("id");
+    $.getJSON("/products/" + id + "/data", function(data) {
+        $("#product-" + id).html(data["description"]);
+    });
+  });
+});
+</script> -->
