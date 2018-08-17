@@ -1,0 +1,19 @@
+<center>
+
+<h1>Edit User Information</h1>
+
+<%= render partial: "form" %>
+
+<%= link_to "Home", '/' %><br>
+
+<%= link_to "Log Out", logout_path %><br><br>
+
+<% if flash[:message].is_a?(Array) %>
+  <% flash[:message].each do |message| %>
+    <%= message %><br>
+  <% end %>
+<% else %>
+  <%= flash[:message] %>
+<% end %><br>
+
+</center>
