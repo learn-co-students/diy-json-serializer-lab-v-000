@@ -1,0 +1,26 @@
+<h2>Product Show Page</h2>
+<!-- Add a link to the products show page called "Next Product" that
+ will use AJAX to load the data for the next product without refreshing the page -->
+
+
+<a href="#" class="js-next" data-id="<%= @product.id %>">Next Product</a>
+
+<h2 class="productName">Name: <%= @product.name %></h2>
+<p class="productPrice">Price: <%= @product.price %></p>
+<p class="productDescription">Description: <%= @product.description %></p>
+<p class="productInventory">Inventory: <%= @product.inventory %></p>
+
+<script type="text/javascript" charset="utf-8">
+  $(function () {
+    $(".js-next").on("click", function() {
+      var nextId = parseInt($(".js-next").attr("data-id")) + 1; //configure the next id
+      $.getJSON("/products/" + nextId + "/data", function(data) {
+        $(".productName").text(data["name"]);
+        $(".productPrice").text(data["price"]);
+        $(".productDescription").text(data["description"]);
+        $(".productInventory").text(data["inventory"]);
+        $(".js-next").attr("data-id", data["id"]);
+      });
+    });
+  });
+</script>
