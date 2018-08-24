@@ -1,0 +1,18 @@
+<p><span id="productName"><%= @product.name %></span>
+<span id="productPrice"> <%= @product.price %></span></p>
+<p id="productDescription"><%= @product.description %></p>
+<a href="#" class="js-next" data-id="<%= @product.id %>">Next Product</a>
+
+<script type="text/javascript" charset="utf-8">
+  $(function(){
+    $('.js-next').on('click', function(){
+      var nextId = parseInt(this.dataset.id) + 1;
+      $.get(`/products/${nextId}/data`, function(data){
+        $('#productName').text(data["name"])
+        $('#productPrice').text(data["price"])
+        $('#productDescription').text(data["description"])
+        $(".js-next").attr("data-id", data["id"]);
+      })
+    })
+  })
+</script>
