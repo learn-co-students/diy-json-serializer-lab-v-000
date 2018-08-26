@@ -1,0 +1,53 @@
+<!-- <a href="#" class="js-next" data-id="<%=@product.id%>">Next Product</a>
+<h1 class="productName"><%= @product.name %></h1>
+<p class="productInventory"><%= @product.inventory %></p>
+<p class="productPrice"><%= @product.price %></p>
+<p class="productDescription"><%= @product.description %></p>
+
+<script type="text/javascript" charset="utf-8">
+$(function () {
+  $(".js-next").on("click", function() {
+    var nextId = parseInt($(".js-next").attr("data-id")) + 1;
+    $.getJSON("/products/" + nextId + "/data", function(data) {
+      $(".productName").text(data["name"]);
+      $(".productPrice").text(data["price"]);
+      $(".productDescription").text(data["description"]);
+      $(".productInventory").text(data["inventory"]);
+      // re-set the id to current on the link
+      $(".js-next").attr("data-id", data["id"]);
+    });
+  });
+});
+</script> -->
+<h2>Name: </h2><h2 class="name"> <%=@product.name%></h2>
+<h3>Price: </h3><h3 class="price"> <%=@product.price%></h3>
+<p>Description: </p><p class="description"> <%=@product.description%></p>
+<p>Inventory: </p><p class="inventory"> <%=@product.inventory%></p>
+<a href="#" id="Next Product" class="js-next-product" data-id="<%=@product.id%>" onclick="nextProduct()">Next Product</a>
+
+<script type="text/javascript" charset="utf-8">
+ function nextProduct() {
+     let Id= parseInt($(".js-next-product").attr("data-id")) + 1;
+     debugger
+     $.getJSON("/products/" + Id + "/data", function(data) {
+       $(".name").text(data["name"])
+       $(".price").text(data["price"])
+       $(".description").text(data["description"])
+       $(".inventory").text(data["inventory"])
+       $(".js-next-product").attr("data-id", Id);
+     })
+   }
+  // $(function() { -->
+  <!-- //   $('.js-next-product').on('click', function() {
+  //     let Id= parseInt($(".js-next-product").attr("data-id")) + 1;
+  //     debugger
+  //     $.getJSON("/products/" + Id + "/data", function(data) {
+  //       $(".name").text(data["name"])
+  //       $(".price").text(data["price"])
+  //       $(".description").text(data["description"])
+  //       $(".inventory").text(data["inventory"])
+  //       $(".js-next-product").attr("data-id", Id);
+  //     })
+  //   })
+  // })
+</script>
