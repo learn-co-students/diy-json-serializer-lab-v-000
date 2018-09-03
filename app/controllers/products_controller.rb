@@ -1,4 +1,10 @@
 class ProductsController < ApplicationController
+
+  def data
+    products = Product.find(params[:id])
+    render json: products.as_json
+  end
+
   def index
     @products = Product.all
   end
@@ -15,6 +21,10 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
+  end
+
+  def show
+    @product = Product.find(params[:id])
   end
 
   def create
