@@ -5,7 +5,7 @@
   1. Write a JSON Serializer
   2. Use that JSON Serializer to render information without page reload
 
-## Introduction
+## Introductio
 
 We're going to use our product/order system and enhance it so that
 customers can browse the product catalog without refreshing the page.
