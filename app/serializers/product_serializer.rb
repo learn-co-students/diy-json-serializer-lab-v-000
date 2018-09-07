@@ -9,7 +9,6 @@ class ProductSerializer
     serialized_product += '"price": ' + product.price.to_s + ', '
     serialized_product += '"inventory": ' + product.inventory.to_s + ''
 
-    # and end with the close brace
     serialized_product += '}'
   end
 end
