@@ -40,9 +40,9 @@ RSpec.describe ProductsController, type: :controller do
       product = Product.create(@product_attributes)
       get :data, id: product.id
       body = JSON.parse(response.body)
-      expect(body["name"]).to eq product.name
-      expect(body["description"]).to eq product.description
-      expect(body["inventory"]).to eq product.inventory
+      expect(product["name"]).to eq product.name
+      expect(product["description"]).to eq product.description
+      expect(product["inventory"]).to eq product.inventory
     end
   end
 
