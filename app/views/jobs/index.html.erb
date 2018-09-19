@@ -2,14 +2,15 @@
 
 
 input[type=text], select {
-    width: 300px;
-    height: 30px;
+    width: 320px;
+    height: 35px;
     padding: 12px 20px;
-    margin: 0 0 15px;
+    margin: 0 0 20px;
     display: inline-block;
     border: 1px solid #5b4f4f;
     border-radius: 4px;
     box-sizing: border-box;
+    font-size: 16px;
 
     /*resize: vertical;*/
 }
@@ -18,35 +19,9 @@ input[type=text]:focus {
     background-color: lightblue;
 }
 
-#activity {
-
-}
 
 
-#quick-add {
 
-}
-
-.right-column {
-    float: right;
-    width: 33.33%;
-    padding: 40px;
-    border-style: solid;
-    border-width: 1px;
-    border-color: #2d2c2c;
-    text-align: center;
-}
-
-.right-column2 {
-    float: right;
-    width: 33.33%;
-    padding: 40px;
-    border-style: solid;
-    border-width: 1px;
-    border-color: #2d2c2c;
-    text-align: center;
-    height: 406px;
-}
 
 </style>
 
@@ -57,14 +32,14 @@ input[type=text]:focus {
 
 <div class="row">
   <div class="column mid-column"">
-    <h2>Saved Positions</h2>
+    <h1>Saved Positions</h1>
 
     <div id='job-search'>
 
-            <p><a href='show.html'></a></p>
+            <h3><a href='show.html'></a></h3>
 
             <div>
-                <input type='text' id='search-jobs' value='filter positions'>
+                <input type='text' id='search-jobs' placeholder='filter positions'>
                 <%= render 'job_list' %>
             </div>
 
@@ -78,23 +53,23 @@ input[type=text]:focus {
 
 
   <div class="column">
-    <h2>Schedule</h2>
+    <h1>Schedule</h1>
     <div>
-        <input type='text' id='add-todo' value='add todo'>
+        <input type='text' id='add-todo' placeholder='add todo'>
     </div>
-    <p>-- filter by applied/not --</p>
-    <p>-- click item for dropdown option to resched/check--</p>
-    <p>Upcoming event</p>
-    <p>Todo - followup</p>
-    <p>Past due - sent resume to acme.co</p>
+    <h3>-- filter by applied/not --</h3>
+    <h3>-- click item for dropdown option to resched/check--</h3>
+    <h3>Upcoming event</h3>
+    <h3>Todo - followup</h3>
+    <h3>Past due - sent resume to acme.co</h3>
   </div>
 
   <div class="right-column">
 
     <div id='quick-add'>
-        <h2>Quick Add Job</h2>
+        <h1>Quick Add Job</h1>
         <div>
-            <input type='text' id='quick-add-job' value='add job url'>
+            <input type='text' id='quick-add-job' placeholder='add job url'>
         </div>
     </div>
   </div>
@@ -103,10 +78,12 @@ input[type=text]:focus {
 
     <div class='right-column2'>
         <div id='activity'>
-            <h2>Stats</h2>
-            <p>You have applied to 10 jobs this week</p>
-            <p>10 new jobs to apply to</p>
-            <p>10 todos</p>
+            <h1>Stats</h1>
+            <h3>You have applied to 10 jobs this week</h3>
+            <h3>45 saved positions</h3>
+            <h3>10 new positions</h3>
+            <h3>10 todos</h3>
+
         </div>
     </div>  
 
@@ -217,7 +194,7 @@ $('h3').click(function(e) {
         return job.name === getIDValue
     })
     closer('.show-desc')
-    $(this).children('span').append("<p class='show-desc'>" + findJob.c_desc + "</p>")
+    $(this).children('span').append("<p class='show-desc'>" + findJob.c_desc + "</h3>")
 })
 
 

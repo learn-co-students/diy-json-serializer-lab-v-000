@@ -10,10 +10,8 @@ class JobsController < ApplicationController
 	end
 
 
-
-
 	def show
-		@job = Job.find(1)
+		@job = Job.find(params[:id])
 	end
 
 	def create 
@@ -22,8 +20,14 @@ class JobsController < ApplicationController
 		redirect_to jobs_path
 	end
 
+	def edit
+		@job = Job.find(params[:id])
+	end
+
 
 	def update
+	    @job.update(job_params)
+	    redirect_to job_path(@job)
 	end
 
 	def destroy

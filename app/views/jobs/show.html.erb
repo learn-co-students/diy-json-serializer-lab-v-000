@@ -1,0 +1,59 @@
+
+<style>
+
+#top {
+	border-bottom: solid 1px;
+	text-align: center;
+	margin: 35px 5px 25px;
+	margin-bottom: 50px;
+}
+
+#mid{
+	text-align: center;
+	margin: 35px 5px 25px;
+}
+
+h1 {
+	text-transform: uppercase;
+}
+
+</style>
+
+
+
+<div id='top'>
+	<h1><%= @job.company %> - <%= @job.position %></h1>
+
+	<h2>Job Link: <%= @job.url %></h2>
+	<h2>Posted Date: <%= @job.posted_date %></h2>
+	<h2>Resume Version: Backend</h2>
+</div>
+
+<div id='mid'>
+
+	<h2>Add Alert</h2>
+	<h2>Add Contacts</h2>
+
+	<% if @job.p_desc != '' %>
+		<p><%= @job.p_desc %></p>
+
+	<% else %>
+		<h2>Add Job Description</h2>
+
+	<% end %>
+
+
+	<% if @job.p_desc != '' %>
+		<p><%= @job.c_desc %></p>
+
+	<% else %>
+		<h2>Add Company Description</h2>
+
+	<% end %>
+
+
+
+
+
+
+</div>

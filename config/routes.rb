@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
-  resources :user_jobs
-  resources :jobs
-  resources :users
 
-  # get '/users/dashboard', to: 'users#dashboard', as: 'dashboard'
+  resources :jobs
+   resources :contacts
+
+  resources :users
+  resources :resumes
+  
 
   root 'application#welcome'
 

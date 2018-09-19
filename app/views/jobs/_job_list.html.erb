@@ -1,4 +1,6 @@
 
 <% @jobs.each do |job| %>
-    <h3><%= job.company %></h3>
+	<% co = job.company %>
+	<% po = job.position %>
+    <h3><%= link_to "#{co} - #{po}", job_path(job)%></h3>
 <% end %>
