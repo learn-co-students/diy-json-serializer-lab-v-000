@@ -1,0 +1,244 @@
+<style>
+
+
+input[type=text], select {
+    width: 300px;
+    height: 30px;
+    padding: 12px 20px;
+    margin: 0 0 15px;
+    display: inline-block;
+    border: 1px solid #5b4f4f;
+    border-radius: 4px;
+    box-sizing: border-box;
+
+    /*resize: vertical;*/
+}
+
+input[type=text]:focus {
+    background-color: lightblue;
+}
+
+#activity {
+
+}
+
+
+#quick-add {
+
+}
+
+.right-column {
+    float: right;
+    width: 33.33%;
+    padding: 40px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #2d2c2c;
+    text-align: center;
+}
+
+.right-column2 {
+    float: right;
+    width: 33.33%;
+    padding: 40px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #2d2c2c;
+    text-align: center;
+    height: 406px;
+}
+
+</style>
+
+
+
+
+
+
+<div class="row">
+  <div class="column mid-column"">
+    <h2>Saved Positions</h2>
+
+    <div id='job-search'>
+
+            <p><a href='show.html'></a></p>
+
+            <div>
+                <input type='text' id='search-jobs' value='filter positions'>
+                <%= render 'job_list' %>
+            </div>
+
+        <br>
+
+        <ul id="jobList">
+        </ul>
+
+    </div>
+  </div>
+
+
+  <div class="column">
+    <h2>Schedule</h2>
+    <div>
+        <input type='text' id='add-todo' value='add todo'>
+    </div>
+    <p>-- filter by applied/not --</p>
+    <p>-- click item for dropdown option to resched/check--</p>
+    <p>Upcoming event</p>
+    <p>Todo - followup</p>
+    <p>Past due - sent resume to acme.co</p>
+  </div>
+
+  <div class="right-column">
+
+    <div id='quick-add'>
+        <h2>Quick Add Job</h2>
+        <div>
+            <input type='text' id='quick-add-job' value='add job url'>
+        </div>
+    </div>
+  </div>
+
+
+
+    <div class='right-column2'>
+        <div id='activity'>
+            <h2>Stats</h2>
+            <p>You have applied to 10 jobs this week</p>
+            <p>10 new jobs to apply to</p>
+            <p>10 todos</p>
+        </div>
+    </div>  
+
+
+
+
+
+</div>
+
+
+
+
+<script>
+    
+
+let jobs = [
+    {
+        name: "acme",
+        j_desc: "dev",
+        c_desc: "medium size"
+    },
+    {
+        name: "acme2",
+        j_desc: "dev2",
+        c_desc: "medium size2"
+    },
+        {
+        name: "acme3",
+        j_desc: "dev3",
+        c_desc: "medium size3"
+    }
+]
+
+let filters = {
+    search_term: ''
+}
+
+
+
+
+// let submitForm = function () {
+//     $('#new-job-form').submit(function (e) {
+//         e.preventDefault()
+//         console.log(e.target);
+//         console.log(this)
+//         search_term = 'new'
+//         jobs.push({name: 'new', j_desc: 'jd', c_desc: 'cd'})
+//         renderJobs(jobs,filters)
+
+//     })
+// }
+
+
+
+// const renderJobs = function (jobs, filters) {
+//     let results = jobs.filter(function (job) {
+//         return job.name.includes(filters.search_term)
+//     })
+
+//     closer('.job')
+
+//     $.each(results, function(index, job) {
+//         let i = +index + 1
+//         $('#jobList').append("<li class='job' id=" + job.name + ">" + i + ": "+ job.name + " - " + job.j_desc + "<span></span></li>")
+//     })
+// }
+
+
+// $.each(@jobs, function(index, job) {
+//     let i = +index + 1
+//     $('#jobList').append("<h3 class='job' id=" + job.company + ">" + i + ": "+ job.name + " - " + job.j_desc + "<span></span></h3>")
+// })
+
+
+
+
+//NEW JOB
+
+
+// ON BUTTON CLICK SHOW FORM
+// $('#create-job').click(function (e) {
+//     // closer('#new-job-form')
+//     $('#form-container').append("<form id='new-job-form'>")
+//     $('#new-job-form').append(form_name)
+//     $('#new-job-form').append(form_position)
+//     $('#new-job-form').append(form_url)
+//     $('#new-job-form').append(form_submit)
+
+//     submitForm()
+// })
+
+// let form_name = "<br><label>Company Name: <input type='text' id='company-name' class='form-field' name='company-name'></label><br>"
+// let form_position = "<label>Position: <input type='text' id='position' class='form-field' name='position'></label><br>"
+// let form_url = "<label>Job Link: <input type='text' id='url' class='form-field' name='url'></label><br>"
+// let form_submit = "<input type='submit' id='submit-form' class='submit'></input></form>"
+
+
+
+
+
+// ON JOB CLICK SHOW DETAILS
+
+
+$('h3').click(function(e) {
+    
+    const getIDValue = $(this).attr('id');
+    const findJob = jobs.find(function (job) {
+        return job.name === getIDValue
+    })
+    closer('.show-desc')
+    $(this).children('span').append("<p class='show-desc'>" + findJob.c_desc + "</p>")
+})
+
+
+let closer = function (thing) {
+    if($(thing).is(":visible")) {
+        $(thing).hide();
+    }
+}
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+

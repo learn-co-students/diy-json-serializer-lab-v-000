@@ -1,0 +1,125 @@
+
+
+<style>
+
+#small-fields {
+    text-align: center;
+    float: left;
+    width: 33.33%;
+    padding: 40px;
+    height: 600px; /* Should be removed. Only for demonstration */
+}
+
+#large-fields {
+    text-align: center;
+    float: left;
+    width: 66.66%;
+    padding: 40px;
+    height: 600px; /* Should be removed. Only for demonstration */
+}
+
+
+
+input[type=text], select {
+    width: 400px;
+    padding: 12px 20px;
+    margin: 0 0 15px;
+    display: inline-block;
+    border: 1px solid #5b4f4f;
+    border-radius: 4px;
+    box-sizing: border-box;
+    /*resize: vertical;*/
+}
+
+input[type=text]:focus {
+    background-color: lightblue;
+}
+
+label {
+  font-size: 20px;
+  font-weight: bold;
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+input[type=submit] {
+    width: 400px;
+    background-color: #00B746;
+    color: white;
+    padding: 12px 20px;
+    margin-top: 35px;
+    /*border: 2px solid;*/
+    /*border-color: darkgray;*/
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 20px;
+    /*font-weight: bold;*/
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+
+</style>
+
+	
+
+
+
+
+    <div id='new-job-form'>
+
+
+        <div id="small-fields">
+
+        <%= form_for (@job) do |f| %>
+
+            <div class="field">
+                <%= f.label :company, "Company Name" %><br>
+                <%= f.text_field :company, id: "company" %>
+            </div>
+
+            <div class="field">
+                <%= f.label :position %><br>
+                <%= f.text_field :position, id: "position" %>
+            </div>
+
+            <div class="field">
+                <%= f.label :url, "Job Link" %><br>
+                <%= f.text_field :url, id: "url" %>
+            </div>            
+
+            <div class="field">
+                <%= f.label :posted_date %><br>
+                <%= f.text_field :posted_date, id: "posted_date" %>
+            </div> 
+
+
+
+            <div class="actions">
+                <%= f.submit "SAVE" %>
+            </div>
+
+        </div>
+
+
+        <div id="large-fields">           
+
+            <div class="field">
+                <%= f.label :p_desc, "Job Description" %><br>
+                <%= f.text_area :p_desc, id: "p_desc", cols: 120, rows: 20 %>
+            </div>            
+
+            <div class="field">
+                <%= f.label :c_desc, "Company Notes" %><br>
+                <%= f.text_area :c_desc, id: "c_desc", cols: 120, rows: 20 %>
+            </div>
+
+            <br>
+
+        </div>
+
+        <% end %>
+
+    </div>
