@@ -1,6 +1,33 @@
 
+
+<div></div>
+
 <% @jobs.each do |job| %>
+
 	<% co = job.company %>
 	<% po = job.position %>
-    <h3><%= link_to "#{co} - #{po}", job_path(job)%></h3>
+	<% id = job.id %>
+	<h3 class="w3-large"><i class="material-icons w3-large" id='<%= id %>'>keyboard_arrow_down</i>
+    <%= link_to "#{co} - #{po}", job_path(job)%></h3>
 <% end %>
+
+
+
+
+<script>
+
+
+
+
+// APPEND JOBS TO JOBLIST
+
+
+// $.each(@jobs, function(index, job) {
+//     let i = +index + 1
+//     $('#jobList').append("<h3 class='job' id=" + job.company + ">" + i + ": "+ job.name + " - " + job.j_desc + "<span></span></h3>")
+// })
+
+
+</script>
+
+

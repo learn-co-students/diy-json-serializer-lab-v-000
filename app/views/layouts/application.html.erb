@@ -9,6 +9,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => 'reload' %>
     <%= stylesheet_link_tag 'application' %>
     <%= csrf_meta_tags %>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 
 <style>
@@ -67,11 +68,34 @@ li a:hover:not(.active) {
 }
 
 
+
+input[type=text], select {
+    width: 320px;
+    height: 35px;
+    padding: 12px 20px;
+    margin: 0 0 20px;
+    display: inline-block;
+    border: 1px solid #5b4f4f;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+
+    /*resize: vertical;*/
+}
+
+input[type=text]:focus {
+    background-color: lightblue;
+}
+
+
+
+
  
 
 /* Create three equal columns that floats next to each other */
 .column {
-    border-style: solid;
+    border-left: solid;
+    border-bottom: solid;
     border-width: 1px;
     border-color: #2d2c2c;
     text-align: left;
@@ -81,7 +105,7 @@ li a:hover:not(.active) {
     height: 600px; /* Should be removed. Only for demonstration */
 }
 
-.mid-column {
+.left-column {
   margin: auto;
   text-align: left;
   padding: 35px;
@@ -113,7 +137,7 @@ li a:hover:not(.active) {
 }
 
 
-.right-column {
+.right-column-upper {
     float: right;
     width: 33.33%;
     padding: 35px;
@@ -123,11 +147,13 @@ li a:hover:not(.active) {
     text-align: left;
 }
 
-.right-column2 {
+.right-column-lower {
     float: right;
     width: 33.33%;
     padding: 35px;
-    border-style: solid;
+    border-left: solid;
+    border-right: solid;
+    border-bottom: solid;
     border-width: 1px;
     border-color: #2d2c2c;
     text-align: left;

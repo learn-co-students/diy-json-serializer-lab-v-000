@@ -1,95 +1,55 @@
-<style>
-
-
-input[type=text], select {
-    width: 320px;
-    height: 35px;
-    padding: 12px 20px;
-    margin: 0 0 20px;
-    display: inline-block;
-    border: 1px solid #5b4f4f;
-    border-radius: 4px;
-    box-sizing: border-box;
-    font-size: 16px;
-
-    /*resize: vertical;*/
-}
-
-input[type=text]:focus {
-    background-color: lightblue;
-}
-
-
-
-
-
-</style>
-
-
-
-
 
 
 <div class="row">
-  <div class="column mid-column"">
-    <h1>Saved Positions</h1>
-
-    <div id='job-search'>
-
+    <div class="column left-column"">
+        <h1>Saved Positions</h1>
+        <div id='job-search'>
             <h3><a href='show.html'></a></h3>
-
             <div>
-                <input type='text' id='search-jobs' placeholder='filter positions'>
-                <%= render 'job_list' %>
+                <input type='text' id='search-jobs' class='dash-field' placeholder='filter positions'>
+                <%= render j'job_list' %>
             </div>
-
-        <br>
-
-        <ul id="jobList">
-        </ul>
-
-    </div>
-  </div>
-
-
-  <div class="column">
-    <h1>Schedule</h1>
-    <div>
-        <input type='text' id='add-todo' placeholder='add todo'>
-    </div>
-    <h3>-- filter by applied/not --</h3>
-    <h3>-- click item for dropdown option to resched/check--</h3>
-    <h3>Upcoming event</h3>
-    <h3>Todo - followup</h3>
-    <h3>Past due - sent resume to acme.co</h3>
-  </div>
-
-  <div class="right-column">
-
-    <div id='quick-add'>
-        <h1>Quick Add Job</h1>
-        <div>
-            <input type='text' id='quick-add-job' placeholder='add job url'>
+            <br>
+            <ul id="jobList"></ul>
         </div>
-    </div>
-  </div>
+    </div> <!-- close left-column -->
+
+
+    <div class="column mid-column">
+        <h1>Schedule</h1>
+        <div>
+            <input type='text' id='add-todo' class='dash-field' placeholder='add todo'>
+        </div>
+        <h3>-- filter by applied/not --</h3>
+        <h3>-- click item for dropdown option to resched/check--</h3>
+        <h3>Upcoming event</h3>
+        <h3>Todo - followup</h3>
+        <h3>Past due - sent resume to acme.co</h3>
+    </div><!-- close column -->
 
 
 
-    <div class='right-column2'>
+    <div class="right-column-upper">
+        <div id='quick-add'>
+            <h1>Quick Add Job</h1>
+        <div>
+            <input type='text' id='quick-add-job' class='dash-field' placeholder='add job url'>
+        </div>
+        </div>
+    </div> <!-- close right-column-upper -->
+
+
+
+
+    <div class='right-column-lower'>
         <div id='activity'>
             <h1>Stats</h1>
             <h3>You have applied to 10 jobs this week</h3>
             <h3>45 saved positions</h3>
             <h3>10 new positions</h3>
             <h3>10 todos</h3>
-
         </div>
-    </div>  
-
-
-
-
+    </div>  <!-- close right-column-lower -->
 
 </div>
 
@@ -124,85 +84,9 @@ let filters = {
 
 
 
-// let submitForm = function () {
-//     $('#new-job-form').submit(function (e) {
-//         e.preventDefault()
-//         console.log(e.target);
-//         console.log(this)
-//         search_term = 'new'
-//         jobs.push({name: 'new', j_desc: 'jd', c_desc: 'cd'})
-//         renderJobs(jobs,filters)
-
-//     })
-// }
 
 
 
-// const renderJobs = function (jobs, filters) {
-//     let results = jobs.filter(function (job) {
-//         return job.name.includes(filters.search_term)
-//     })
-
-//     closer('.job')
-
-//     $.each(results, function(index, job) {
-//         let i = +index + 1
-//         $('#jobList').append("<li class='job' id=" + job.name + ">" + i + ": "+ job.name + " - " + job.j_desc + "<span></span></li>")
-//     })
-// }
-
-
-// $.each(@jobs, function(index, job) {
-//     let i = +index + 1
-//     $('#jobList').append("<h3 class='job' id=" + job.company + ">" + i + ": "+ job.name + " - " + job.j_desc + "<span></span></h3>")
-// })
-
-
-
-
-//NEW JOB
-
-
-// ON BUTTON CLICK SHOW FORM
-// $('#create-job').click(function (e) {
-//     // closer('#new-job-form')
-//     $('#form-container').append("<form id='new-job-form'>")
-//     $('#new-job-form').append(form_name)
-//     $('#new-job-form').append(form_position)
-//     $('#new-job-form').append(form_url)
-//     $('#new-job-form').append(form_submit)
-
-//     submitForm()
-// })
-
-// let form_name = "<br><label>Company Name: <input type='text' id='company-name' class='form-field' name='company-name'></label><br>"
-// let form_position = "<label>Position: <input type='text' id='position' class='form-field' name='position'></label><br>"
-// let form_url = "<label>Job Link: <input type='text' id='url' class='form-field' name='url'></label><br>"
-// let form_submit = "<input type='submit' id='submit-form' class='submit'></input></form>"
-
-
-
-
-
-// ON JOB CLICK SHOW DETAILS
-
-
-$('h3').click(function(e) {
-    
-    const getIDValue = $(this).attr('id');
-    const findJob = jobs.find(function (job) {
-        return job.name === getIDValue
-    })
-    closer('.show-desc')
-    $(this).children('span').append("<p class='show-desc'>" + findJob.c_desc + "</h3>")
-})
-
-
-let closer = function (thing) {
-    if($(thing).is(":visible")) {
-        $(thing).hide();
-    }
-}
 
 
 </script>
