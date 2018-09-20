@@ -7,7 +7,14 @@
             <h3><a href='show.html'></a></h3>
             <div>
                 <input type='text' id='search-jobs' class='dash-field' placeholder='filter positions'>
-                <%= render j'job_list' %>
+
+                <% @jobs.each do |job| %>
+                  <%= render partial: "job", locals: {job: job} %>
+                <% end %>
+
+                <br>
+
+          
             </div>
             <br>
             <ul id="jobList"></ul>
@@ -55,51 +62,17 @@
 
 
 
-
-<script>
-    
-
-let jobs = [
-    {
-        name: "acme",
-        j_desc: "dev",
-        c_desc: "medium size"
-    },
-    {
-        name: "acme2",
-        j_desc: "dev2",
-        c_desc: "medium size2"
-    },
-        {
-        name: "acme3",
-        j_desc: "dev3",
-        c_desc: "medium size3"
-    }
-]
-
-let filters = {
-    search_term: ''
-}
-
-
-
-
-
-
-
-
-
+<script type="text/javascript" charset="utf-8">
+$(function () {
+  $("i").on('click', function() {
+    // debugger
+    var id = this.id
+    console.log('test2', this, 'span#'+id)
+    $('.'+id).css('display', 'block')
+    //$.get("/jobs/" + id + "/body", function(data) {
+      // Replace text of body-id div
+    //    console.log(data)
+   // });
+  });
+});
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
-

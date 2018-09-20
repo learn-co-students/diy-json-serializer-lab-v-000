@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :users
   resources :resumes
   
-
+	get '/jobs/:id/body', to: 'jobs#body'
   root 'application#welcome'
 
 end

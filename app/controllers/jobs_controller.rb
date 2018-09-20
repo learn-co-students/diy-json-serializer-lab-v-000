@@ -20,6 +20,11 @@ class JobsController < ApplicationController
 		redirect_to jobs_path
 	end
 
+	def body
+	    job = Job.find(params[:id])
+	    render plain: job.c_desc
+	end
+
 	def edit
 		@job = Job.find(params[:id])
 	end
