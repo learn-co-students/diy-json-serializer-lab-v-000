@@ -1,0 +1,23 @@
+<h3 class="name"><%=@product.name%></h3>
+
+<p class="description">Description: <%=@product.description%></p>
+<p class="inventory">inventory: <%=@product.inventory%></p>
+<p class="price">Price: <%=@product.price%></p>
+<a href="#" class="show_link" data-id="<%=@product.id%>">Next Product</a>
+
+<!-- <script type="text/javascript">
+  $(function () {
+    $(".show_link").on("click", function (e) {
+      e.preventDefault()
+      var id = parseInt($(this).data("id")) + 1
+      $.getJSON("/products/" + id + "/data", function (data) {
+        console.log(data)
+        $(".name").text(data["name"])
+        $(".description").text(data["description"])
+        $(".inventory").text(data["inventory"])
+        $(".price").text(data["price"])
+      })
+    })
+  })
+
+</script> -->
