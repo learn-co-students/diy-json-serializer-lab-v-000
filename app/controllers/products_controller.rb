@@ -1,16 +1,11 @@
 class ProductsController < ApplicationController
+  # standard RESTful routes
   def index
     @products = Product.all
   end
 
-  def inventory
-    product = Product.find(params[:id])
-    render plain: product.inventory > 0 ? true : false
-  end
-
-  def description
-    product = Product.find(params[:id])
-    render plain: product.description
+  def show
+    @product = Product.find(params[:id])
   end
 
   def new
@@ -20,6 +15,22 @@ class ProductsController < ApplicationController
   def create
     Product.create(product_params)
     redirect_to products_path
+  end
+
+  # custom routes
+  def data
+    product = Product.find(params[:id])
+    render json: ProductSerializer.serialize(product)
+  end
+
+  def description
+    product = Product.find(params[:id])
+    render plain: product.description
+  end
+
+  def inventory
+    product = Product.find(params[:id])
+    render plain: product.inventory > 0 ? true : false
   end
 
   private
