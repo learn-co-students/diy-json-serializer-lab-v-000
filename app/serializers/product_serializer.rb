@@ -6,9 +6,14 @@ class ProductSerializer
     ser += '"price": ' + product.price.to_s + ','
     if product.inventory != nil
       ser += '"inventory": ' + product.inventory.to_s + ','
+    else
+      ser += '"inventory": "",'
     end
     if product.inventory != nil
-      ser += '"description": "' + product.description + '"}'
+      ser += '"description": "' + product.description + '"'
+    else
+      ser += '"description": ""'
     end
+    ser += '}'
   end
 end
