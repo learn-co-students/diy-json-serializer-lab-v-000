@@ -1,0 +1,17 @@
+<h1 class="productName"><%= @product.name %></h1>
+<p class="productDesc"><%= @product.description %></p>
+<a class="js-next" data-id="<%= @product.id %>" href="#">Next Product</a>
+
+<script type="text/javascript", charset="utf-8">
+  $(function() {
+    $(".js-next").on('click', function(e) {
+      var nextID = $(this).data("id") + 1
+      $.getJSON("/products/" + nextID + "/data", function(json) {
+        $(".productName").text(json['name'])
+        $(".productDesc").text(json['description'])
+        $(".js-next").data("id", nextID)
+      })
+      e.preventDefault()
+    })
+  })
+</script>
