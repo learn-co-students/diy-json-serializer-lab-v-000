@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe ProductsController, type: :controller do
   before do
     Product.destroy_all
-    @product_attributes = {name: "Test", price: "3.99", inventory: 12, description: "This is a great thing"}
+    @product_attributes = {name: "Test", price: "3.99", inventory: 12, description: "This is a great thing", inventory: 12}
   end
 
   describe "POST create" do
@@ -42,7 +42,7 @@ RSpec.describe ProductsController, type: :controller do
       body = JSON.parse(response.body)
       expect(body["name"]).to eq product.name
       expect(body["description"]).to eq product.description
-      expect(body["inventory"]).to eq product.inventory
+      expect(body["inventory"].to_i).to eq product.inventory
     end
   end
 
