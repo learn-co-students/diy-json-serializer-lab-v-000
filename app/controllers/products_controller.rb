@@ -10,6 +10,10 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render json: @post.to_json(only: [:name, :description, :id, :inventory, :price])}
+    end
   end
 
 
