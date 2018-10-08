@@ -3,6 +3,8 @@
   <h3><%= product.name %></h3>
   <div id="product-<%= product.id %>"><%= truncate(product.description) %></div>
   <button class="js-more" data-id="<%= product.id %>">More Info</button>
+  <%= link_to "See Product", product_path(product) %>
+  <a class="js-next-page" href="#" data-id="<%= product.id %>">Next Page</a>
 <% end %>
 
 <script type="text/javascript" charset="utf-8">
@@ -18,7 +20,15 @@ $(function() {
         var descriptionText = "<p>" + description + "</p><p>" + inventoryText + "</p>";
         $("#product-" + id).html(descriptionText);
       });
-    });
+  });
+  });
+
+  $('.js-next-page').on('click', function(){
+      var nextId = parseInt(this.dataset["id"]) + 1
+      $.getJSON('products/' + nextId + '/data', function(json){
+          debugger
+
+      });
   });
 });
 </script>
