@@ -1,3 +1,4 @@
+require 'pry'
 class ProductsController < ApplicationController
   def index
     @products = Product.all
@@ -20,6 +21,16 @@ class ProductsController < ApplicationController
   def create
     Product.create(product_params)
     redirect_to products_path
+  end
+
+  def show
+    binding.pry
+    @product = Product.find(params[:id])
+  end
+
+  def data
+    @product = Product.find(params[:id])
+    render json: ProductSerializer.serialize(@product)
   end
 
   private
