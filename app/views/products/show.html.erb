@@ -1,26 +1,21 @@
-<% if @product.name %>
-  <div class="productName"><%= @product.name %></div>
+<% if @product.name%>
+  <h1 class="productName"><%=@product.name%></div>
 <% end %>
 
 <a href="#" class="js-next" data-id="<%=@product.id%>">Next Product</a>
-<h1 class="productName"><%= @product.name %></h1>
-<p class="productBody">
-  <%= @product.description %><br>
-  <%= @product.inventory %><br>
-  <%= @product.price %>
-</p>
-
-<!-- inventory: 0, description: "This is a test description with more text than should be there.", price: "2.99" -->
+<p class="productPrice"><%=@product.price%></p>
+<p class="productDescription"><%=@product.description%></p>
+<p class="productInventory"><%=@product.inventory%></p>
 
 <script type="text/javascript" charset="utf-8">
-  $(function () {
+  $(function() {
     $(".js-next").on("click", function() {
       var nextId = parseInt($(".js-next").attr("data-id")) + 1;
       $.getJSON("/products/" + nextId + "/data", function(data) {
-        $(".productName").text(data["product"]["name"]);
-        $(".productTitle").text(data["name"]);
-        $(".productBody").text(data[["description"],["inventory"],["price"]]);
-        // re-set the id to current on the link
+        $(".productName").text(data["name"]);
+        $(".productDescription").text(data["description"]);
+        $(".productInventory").text(data["inventory"]);
+        $(".productPrice").text(data["price"]);
         $(".js-next").attr("data-id", data["id"]);
       });
     });
