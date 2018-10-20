@@ -2,8 +2,10 @@
 
 <h1 class="productName"><%=@product.name%></div>
 <p class="productDescription"><%=@product.description%></p>
-<p class="productPrice"><%=@product.price%></p>
+
 <p class="productInventory"><%=@product.inventory%></p>
+<p class="productPrice"><%=@product.price%></p>
+
 
 
 
@@ -11,11 +13,14 @@
   $(function() {
     $(".js-next").on("click", function() {
       var nextId = parseInt($(".js-next").attr("data-id")) + 1;
+
       $.getJSON("/products/" + nextId + "/data", function(data) {
+
         $(".productName").text(data["name"]);
         $(".productDescription").text(data["description"]);
-        $(".productInventory").text(data["inventory"]);
         $(".productPrice").text(data["price"]);
+        $(".productInventory").text(data["inventory"]);
+
         $(".js-next").attr("data-id", data["id"]);
       });
     });
