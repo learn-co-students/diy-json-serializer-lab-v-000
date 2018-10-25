@@ -12,7 +12,13 @@ class ProductsController < ApplicationController
     product = Product.find(params[:id])
     render plain: product.description
   end
-
+  def show
+    @product = Product.find(params[:id])
+  end
+  def data
+    product = Product.find(params[:id])
+    render json: ProductSerializer.serialize(product)
+  end
   def new
     @product = Product.new
   end
