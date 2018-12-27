@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get '/products/:id/data', to: 'products#data'
   get 'home', to: 'static#home'
   resources :orders
   resources :invoices
