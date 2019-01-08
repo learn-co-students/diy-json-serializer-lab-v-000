@@ -1,0 +1,19 @@
+<a href="#" class="js-next" data-id="<%= @product.id + 1%>  ">Next Product</a>
+
+<h1 class="productName"><%= @product.name %></h1>
+  <p class="productBody"><%= @product.description %></p>
+
+<script type="text/javascript" charset="utf-8">
+$(function () {
+  $(".js-next").on('click', function(e) {
+    var id = $(this).data("id");
+    $.get("/products/" + id + "/data", function(data) {
+      // Replace text of body-id div
+  
+      $(".productName").text(data["name"]);
+      $(".productBody").text(data["description"]);
+    });
+     e.preventDefault();
+  });
+});
+</script>
