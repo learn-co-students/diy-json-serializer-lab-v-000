@@ -1,0 +1,21 @@
+<div id='js-product-name'><%= @product.name %> </div>
+<div id='js-product-description'><%= @product.description %></div>
+
+<button id='js-next' data-id='<%= @product.id %>' >Next Product</button>
+
+<script>
+  $(function() {
+      $('#js-next').on('click', function() {
+        var id = $(this).data("id")
+
+        fetch(`/products/${id + 1}/data`)
+        .then(response => response.json())
+        .then(
+          product => {
+            $('#js-next').data('id', product["id"]);
+            $('#js-product-name').text(product.name);
+            $('#js-product-description').text(product.description);
+          });
+      })
+  })
+</script>
