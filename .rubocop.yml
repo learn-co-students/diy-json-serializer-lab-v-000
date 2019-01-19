@@ -1,0 +1,12 @@
+Metrics/LineLength:
+  Max: 80
+
+AllCops:
+  Exclude:
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'script/**/*'
+    - 'bin/{rails,rake}'
+
+Rails:
+  Enabled: true
