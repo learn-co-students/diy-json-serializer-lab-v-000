@@ -4,13 +4,17 @@ class ProductsController < ApplicationController
   end
 
   def inventory
-    product = Product.find(params[:id])
+    product = set_product
     render plain: product.inventory > 0 ? true : false
   end
 
   def description
-    product = Product.find(params[:id])
+    product = set_product
     render plain: product.description
+  end
+
+  def show
+    @product = set_product
   end
 
   def new
@@ -22,7 +26,18 @@ class ProductsController < ApplicationController
     redirect_to products_path
   end
 
+ def data
+   product = set_product
+   render json: ProductSerializer.serialize(product)
+ end
+
+
   private
+
+
+  def set_product
+    @product = Product.find(params[:id])
+  end
 
   def product_params
     params.require(:product).permit(:name, :description, :inventory, :price)
