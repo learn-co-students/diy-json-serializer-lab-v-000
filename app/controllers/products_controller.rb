@@ -15,6 +15,7 @@ class ProductsController < ApplicationController
 
   def data
     product = Product.find(params[:id])
+    # This will make the /data page show only json outputs
     render json: ProductSerializer.serialize(product)
   end
 
