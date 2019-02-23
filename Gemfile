@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'bundler', '~> 1.16', '>= 1.16.1'
 gem 'pry'
 gem 'pry-nav'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -41,6 +42,7 @@ group :development, :test do
   gem 'faker'
   gem 'shoulda'
   gem 'poltergeist', '~> 1.14.0'
+  gem 'phantomjs', :require => 'phantomjs/poltergeist'
 end
 
 group :development do
