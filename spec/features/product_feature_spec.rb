@@ -12,7 +12,7 @@ RSpec.describe "Products", type: :feature do
     visit product_path(p1)
     expect(page).to have_content p1.name
     click_link "Next Product"
-    expect(page).not_to have_content p2.name
+    expect(page).to have_content p2.name #change from expect(page).not_to have_content p2.name which does not test JS. JS would need to be disabled for this test to work.
   end
 
   it 'loads next product without page refresh', js: true do
@@ -23,6 +23,7 @@ RSpec.describe "Products", type: :feature do
     expect(page).to have_content p1.name
     expect(page).to have_content p1.description
     click_link "Next Product"
+    # binding.pry
     expect(page).to have_content p2.name
     expect(page).to have_content p2.description
   end
