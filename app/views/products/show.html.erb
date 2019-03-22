@@ -1,0 +1,19 @@
+<h1 class="js-name"> <%= @product.name %> </h1>
+<div class="js-description"><%= @product.description %></div>
+
+<a href="#" class="js-link" data-id="<%= @product.id %>">Next Product</a>
+
+<script type="text/javascript" charset="utf-8">
+  $(function () {
+    $(".js-link").on('click', function(e) {
+      var nextId = parseInt($(".js-link").attr("data-id")) + 1;
+      $.getJSON('/products/' + nextId + '/data', function(data) {
+        $(".js-name").text(data["name"]);
+        $(".js-description").text(data["description"]);
+        $(".js-link").attr("data-id", data["id"]);
+      });
+      e.preventDefault();
+    })
+  })
+
+</script>
