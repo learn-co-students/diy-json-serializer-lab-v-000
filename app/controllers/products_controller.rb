@@ -28,8 +28,7 @@ class ProductsController < ApplicationController
     end
 
     def data
-        product = set_product
-        render json: ProductSerializer.serialize(product)
+        render json: ProductSerializer.serialize(set_product)
     end
 
     private
