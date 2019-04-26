@@ -1,0 +1,23 @@
+<a href="#" id="Next Product">Next Product</a> 
+
+<h1><%= @product.name %></h1>
+<p data-id="product-<%= @product.id %>"><%= @product.description %></p>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script>
+    $("a").on("click", view_next_product) 
+
+function view_next_product(){
+   product_id = parseInt($("p").data("id").split("-")[1]) 
+   next_product_id = product_id + 1
+   console.log(next_product_id) 
+   $.get("/products/" + next_product_id + "/data", { id: next_product_id}, 
+     function(data) {
+       console.log(data)
+       $("h1").text(data["name"] )
+       $("p").text( data["description"]) 
+       $("p").data("id", "product-" + next_product_id)
+     }
+   )
+   return false ;
+}
+</script>
