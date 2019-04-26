@@ -8,7 +8,7 @@
 ## Introduction
 
 We're going to use our product/order system and enhance it so that
-customers can browse the product catalog without refreshing the page.
+customers can browse the prjkhkhjjkhkoduct catalog without refreshing the page.
 
 You'll be modifying and building on the code from the previous lab,
 which is provided.
