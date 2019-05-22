@@ -21,4 +21,17 @@ $(function() {
     });
   });
 });
-</script>
+</script> -->
+
+<!-- <script type="text/javascript" charset="utf-8">
+$(function () {
+  $(".js-more").on('click', function() {
+    var id = $(this).data("id");
+    // change the URL to the new route
+    $.get("/products/" + id + "/data", function(data) {
+      // Replace text of body-id div
+      $("#product-" + id).html(data["description"]);
+    });
+  });
+});
+</script> -->
