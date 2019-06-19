@@ -1,0 +1,19 @@
+<h1><%= @product.name %></h1>
+<p><%= @product.description %></p>
+
+<a href="#" data-id="<%= @product.id + 1 %>" class="next-product">Next Product</a>
+
+<script type="text/javascript" charset="utf-8">
+$(function () {
+  $(".next-product").on('click', function() {
+    var id = $(this).data("id");
+    // change the URL to the new route
+    $.get("/products/" + id + "/data", function(data) {
+      // Replace text of body-id div
+      $("h1").text(data["name"]);
+      $("p").text(data["description"]);
+
+    });
+  });
+});
+</script>
