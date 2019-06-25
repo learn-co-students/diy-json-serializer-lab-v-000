@@ -1,0 +1,15 @@
+<h1><%= @product.name %></h1>
+<a href="#" class="js-next" data-id="<%=@post.id%>">Next Product</a>
+
+<script type="text/javascript" charset="utf-8">
+$(function () {
+  $(".js-next").on("click", function() {
+    var nextId = parseInt($(".js-next").attr("data-id")) + 1;
+    $.get("/posts/" + nextId + "/data", function(data) {
+      $(".postName").text(data["name"]);
+      $(".postPrice").text(data["price"]);
+      $(".js-next").attr("data-id", data["id"]);
+    });
+  });
+});
+</script>
