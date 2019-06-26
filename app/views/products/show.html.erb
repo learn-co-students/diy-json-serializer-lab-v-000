@@ -8,14 +8,15 @@
 
 <script type="text/javascript" charset="utf-8">
 $(function () {
-  $(".js-next").on("click", function() {
+  $(".js-next").on("click", function(event) {
+    event.preventDefault()
     var nextId = parseInt($(".js-next").attr("data-id")) + 1;
     $.getJSON("/products/" + nextId + "/data", function(data) {
       $(".productName").text(data["name"]);
       $(".productPrice").text(data["price"]);
       $(".productInventory").text(data["inventory"]);
       $(".productDescription").text(data["description"]);
-    
+
       $(".js-next").attr("data-id", data["id"]);
     });
   });
