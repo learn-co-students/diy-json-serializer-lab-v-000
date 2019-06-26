@@ -8,9 +8,9 @@ class ProductsController < ApplicationController
     render plain: product.inventory > 0 ? true : false
   end
 
-  def description
+  def data
     product = Product.find(params[:id])
-    render plain: product.description
+    render json: ProductSerializer.serialize(product)
   end
 
   def new
