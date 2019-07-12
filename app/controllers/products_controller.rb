@@ -3,9 +3,18 @@ class ProductsController < ApplicationController
     @products = Product.all
   end
 
+  def data
+    product = Product.find(params[:id])
+    render json: ProductSerializer.serialize(product)
+  end
+
   def inventory
     product = Product.find(params[:id])
-    render plain: product.inventory > 0 ? true : false
+    if product.inventory > 0
+      render plain: true
+    else
+      render plain: false
+    end
   end
 
   def description
@@ -20,6 +29,10 @@ class ProductsController < ApplicationController
   def create
     Product.create(product_params)
     redirect_to products_path
+  end
+
+  def show
+    @product =Product.find(params[:id])
   end
 
   private
