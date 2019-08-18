@@ -9,16 +9,18 @@
 $(function() {
   $(".js-more").on("click", function() {
     var id = $(this).data("id");
-    $.get("/products/" + id + "/description", function(description) {
-      $.get("/products/" + id + "/inventory", function(inventory) {
+    // It's making it here
+    $.getJSON("/products/" + id + "/data", function(product) {
+       console.log(product)
         var inventoryText = "<strong>Available</strong>";
-        if(inventory === "false"){
+        console.log(product["inventory"])
+        if(product["inventory"] === "false"){
           inventoryText = "<strong>Sold Out</strong>";
         }
-        var descriptionText = "<p>" + description + "</p><p>" + inventoryText + "</p>";
+        var descriptionText = "<p>" + product["description"] + "</p><p>" + inventoryText + "</p>";
+        console.log(product["description"])
         $("#product-" + id).html(descriptionText);
       });
     });
   });
-});
 </script>
