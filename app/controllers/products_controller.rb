@@ -13,15 +13,24 @@ class ProductsController < ApplicationController
     render plain: product.description
   end
 
+  def data
+    product = Product.find(params[:id])
+    render plain: ProductSerializer.serialize(product)
+  end
+
   def new
     @product = Product.new
   end
 
   def create
-    Product.create(product_params)
+    @product = Product.create(product_params)
+    @product.save
     redirect_to products_path
   end
 
+  def show
+    @product = Product.find(params[:id])
+  end
   private
 
   def product_params
